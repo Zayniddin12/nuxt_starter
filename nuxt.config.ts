@@ -19,7 +19,7 @@ export default defineNuxtConfig({
     },
   },
 
-  css: ['~/assets/tailwind.css'],
+  css: ['~/assets/tailwind.css', 'element-plus/dist/index.css'],
 
   modules: [
     '@nuxtjs/tailwindcss',
