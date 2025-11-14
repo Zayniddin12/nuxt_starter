@@ -19,11 +19,12 @@ export default defineNuxtConfig({
     },
   },
 
-  css: ['~/assets/tailwind.css', 'element-plus/dist/index.css'],
-
+  css: ['~/assets/styles/tailwind.css', '~/assets/styles/main.css'],
   modules: [
     '@nuxtjs/tailwindcss',
     'nuxt-gtag',
+    '@element-plus/nuxt',
+    '@nuxtjs/i18n',
     //   Enable if your Yandex Metrica with real credentials
     // [
     //   'yandex-metrika-module-nuxt3',
@@ -44,8 +45,16 @@ export default defineNuxtConfig({
       'nuxt-simple-robots',
       'nuxt-simple-sitemap',
     ],
+    '@nuxtjs/i18n',
   ],
-
+  i18n: {
+    defaultLocale: 'en',
+    locales: [
+      { code: 'en', name: 'English', file: 'en.json' },
+      { code: 'uz', name: 'Uzbek', file: 'uz.json' },
+      { code: 'ru', name: 'Russian', file: 'ru.json' },
+    ],
+  },
   nitro: {
     serveStatic: true,
   },

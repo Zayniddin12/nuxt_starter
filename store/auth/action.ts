@@ -1,10 +1,8 @@
 // store/auth/action.ts
 import { AuthState } from './state';
-import { signUpApi, login, logout as logoutApi, currentUser, storeApplications, updateApplications, userQuestions, getApplication, getApplicationById, sendToReview } from '@/composables/auth/service';
-import { setToken, setTokenTime, clearForLogout } from '@/composables/auth/token';
-import { useFormat } from '@/composables/useFormat';
+import { signUpApi, login, logout as logoutApi, currentUser, storeApplications, updateApplications, userQuestions, getApplication, getApplicationById, sendToReview } from '@/api/auth';
+import { setToken, setTokenTime, clearForLogout } from '@/utils/auth';
 
-const { recursiveCheckObj } = useFormat();
 
 export interface AuthActions {
   signUp(data: any): Promise<any>;
@@ -132,19 +130,7 @@ export const actions: AuthActions & ThisType<AuthState & AuthActions> = {
     }
   },
 
-  async userQuestions(data) {
-    const formData = new FormData();
-    Object.keys(data).forEach(key => {
-      if (key === 'phone_number') recursiveCheckObj(key, data[key], formData);
-      else formData.append(key, data[key]);
-    });
-    try {
-      const res: any = await userQuestions(formData);
-      return res;
-    } catch (err) {
-      throw err;
-    }
-  },
+
 
   async sendToReview(params) {
     try {
